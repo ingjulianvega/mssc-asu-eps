@@ -30,7 +30,7 @@ public class EpsServiceImpl implements EpsService {
         log.debug("get()...");
         return EpsList
                 .builder()
-                .epsDto(epsMapper.epsEntityListToEpsDtoList(epsRepository.findAll()))
+                .epsDto(epsMapper.epsEntityListToEpsDtoList(epsRepository.findAllByOrderByName()))
                 .build();
     }
 
