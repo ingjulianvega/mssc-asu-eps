@@ -10,7 +10,7 @@
 
 	<groupId>ingjulianvega.ximic</groupId>
 	<artifactId>mssc-asu-eps</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>eps</name>
 	<description>EPS management microservice</description>
 

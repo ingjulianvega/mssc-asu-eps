@@ -37,6 +37,7 @@ public class EpsLoader implements CommandLineRunner {
                 EpsEntity.builder().name("SALUDVIDA").build(),
                 EpsEntity.builder().name("COOMEVA").build(),
                 EpsEntity.builder().name("CRUZ BLANCA").build(),
+                EpsEntity.builder().name("NINGUNA").build(),
                 EpsEntity.builder().name("MEDIMAS").build()
         ));
     }
