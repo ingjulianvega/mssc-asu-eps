@@ -24,9 +24,9 @@ public class EpsServiceImpl implements EpsService {
     private final EpsRepository epsRepository;
     private final EpsMapper epsMapper;
 
-    @Cacheable(cacheNames = "epsListCache")
+    @Cacheable(cacheNames = "epsListCache", condition = "#usingCache == false")
     @Override
-    public EpsList get() {
+    public EpsList get(Boolean usingCache) {
         log.debug("get()...");
         return EpsList
                 .builder()

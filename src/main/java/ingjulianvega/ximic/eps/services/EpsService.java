@@ -9,7 +9,7 @@ import ingjulianvega.ximic.eps.web.model.EpsList;
 import java.util.UUID;
 
 public interface EpsService {
-    EpsList get();
+    EpsList get(Boolean usingCache);
 
     EpsDto getById(UUID id);
 

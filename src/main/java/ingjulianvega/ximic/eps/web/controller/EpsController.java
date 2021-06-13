@@ -20,8 +20,8 @@ public class EpsController implements EpsI {
     private final EpsService epsService;
 
     @Override
-    public ResponseEntity<EpsList> get() {
-        return new ResponseEntity<>(epsService.get(), HttpStatus.OK);
+    public ResponseEntity<EpsList> get(Boolean usingCache) {
+        return new ResponseEntity<>(epsService.get(usingCache), HttpStatus.OK);
     }
 
     @Override

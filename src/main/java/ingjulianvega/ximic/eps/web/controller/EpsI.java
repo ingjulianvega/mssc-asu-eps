@@ -33,7 +33,7 @@ public interface EpsI {
     @RequestMapping(value = "/",
             produces = {"application/json"},
             method = RequestMethod.GET)
-    ResponseEntity<EpsList> get();
+    ResponseEntity<EpsList> get(@Parameter(in = ParameterIn.QUERY, description = "The using of cache", required = true, schema = @Schema()) Boolean usingCache);
 
 
     @Operation(summary = "Endpoint to get the information of an EPS given the id", description = "Returns an EPS", tags = {"EPS"})
