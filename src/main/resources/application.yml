@@ -37,7 +37,7 @@ logging:
 #Exceptions
 eps:
   success: The operation was successful.
-  prefix: 'API-EPS:'
+  prefix: @artifactId@
   error:
     general: There was an unexpected error. Please try again.
 #Eureka
