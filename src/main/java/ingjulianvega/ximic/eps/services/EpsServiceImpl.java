@@ -12,6 +12,7 @@ import ingjulianvega.ximic.eps.web.model.EpsList;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -39,7 +40,14 @@ public class EpsServiceImpl implements EpsService {
     public EpsDto getById(UUID id) {
         log.debug("getById()...");
         return epsMapper.epsEntityToEpsDto(
-                epsRepository.findById(id).orElseThrow(() -> new EpsException(ErrorCodeMessages.EPS_NOT_FOUND, "")));
+                epsRepository.findById(id).orElseThrow(() -> EpsException
+                        .builder()
+                        .httpStatus(HttpStatus.BAD_REQUEST)
+                        .apiCode(ErrorCodeMessages.EPS_NOT_FOUND_API_CODE)
+                        .error(ErrorCodeMessages.EPS_NOT_FOUND_ERROR)
+                        .message(ErrorCodeMessages.EPS_NOT_FOUND_MESSAGE)
+                        .solution(ErrorCodeMessages.EPS_NOT_FOUND_SOLUTION)
+                        .build()));
     }
 
     @Override
@@ -57,7 +65,14 @@ public class EpsServiceImpl implements EpsService {
     @Override
     public void updateById(UUID id, Eps eps) {
         log.debug("updateById...");
-        EpsEntity epsEntity = epsRepository.findById(id).orElseThrow(() -> new EpsException(ErrorCodeMessages.EPS_NOT_FOUND, ""));
+        EpsEntity epsEntity = epsRepository.findById(id).orElseThrow(() -> EpsException
+                .builder()
+                .httpStatus(HttpStatus.BAD_REQUEST)
+                .apiCode(ErrorCodeMessages.EPS_NOT_FOUND_API_CODE)
+                .error(ErrorCodeMessages.EPS_NOT_FOUND_ERROR)
+                .message(ErrorCodeMessages.EPS_NOT_FOUND_MESSAGE)
+                .solution(ErrorCodeMessages.EPS_NOT_FOUND_SOLUTION)
+                .build());
         epsEntity.setName(eps.getName());
 
         epsRepository.save(epsEntity);
